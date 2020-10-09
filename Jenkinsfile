@@ -15,7 +15,6 @@ pipeline {
 
     post {
         always {
-            junit '**/target/surefire-reports/*.xml'
             archiveArtifacts artifacts: '*/*', fingerprint: true
             script {
                 currentBuild.result = currentBuild.result ?: currentBuild.currentResult
