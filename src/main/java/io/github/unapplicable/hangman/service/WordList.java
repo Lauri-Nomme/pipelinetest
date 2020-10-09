@@ -14,7 +14,7 @@ public class WordList {
     private final PrimitiveIterator.OfInt randomIterator;
 
     public WordList(InputStream stream) {
-        this(new BufferedReader(new InputStreamReader(stream, StandardCharsets.UTF_8))
+        this(new BufferedReader(new InputStreamReader(stream))
             .lines()
             .map(String::toLowerCase)
             .collect(Collectors.toList()));
