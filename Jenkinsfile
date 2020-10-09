@@ -7,15 +7,14 @@ pipeline {
     stages {
         stage ('Build') {
             steps {
-                sh 'mvn -T 1C verify package findbugs:findbugs'
+                sh 'mvn -T 1C verify package findbugs:check'
             }
         }
     }
 
     post {
         always {
-            junit '**/target/surefire-reports/*.xml'
-            recordIssues tool: findbugs()
+            recordIssues tool: findBugs()
             archiveArtifacts artifacts: '*/*', fingerprint: true
             script {
                 currentBuild.result = currentBuild.result ?: currentBuild.currentResult
