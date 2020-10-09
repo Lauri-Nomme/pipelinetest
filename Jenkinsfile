@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage ('Build') {
             steps {
-                sh 'mvn -T 1C verify package findbugs:check'
+                sh 'mvn -T 1C verify package findbugs:findbugs'
             }
         }
     }
